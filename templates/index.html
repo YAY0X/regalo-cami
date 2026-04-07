@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <title>Feliz Cumpleaños Cami 💜</title>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <button class="hamburguesa" aria-label="Menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="menu">
+                <li>
+                    <a href="#">07/04/26</a>
+                    <ul class="submenu">
+                        <li><a href="index.html">INICIO</a></li>
+                        <li><a href="Galeria.html">GALERIA</a></li>
+                        <li><a href="carta.html">CARTITA</a></li>
+                        <li><a href="playlist.html">PLAYLIST</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <p class="titulo">Feliz Cumpleaños Cami</p>
+       
+        <div class="musica">
+            <audio id="bg-music" loop>
+                <source src="../src/Mañanitas alvin y las ardillas.mp3" type="audio/mpeg">
+            </audio>
+            <button class="btn-musica" id="btn-play" onclick="toggleMusica()">▶ Reproducir música</button>
+        </div>
+
+         <img src="../src/Snapchat-208006668.jpg" alt="fotito">
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const duracion = 3000;
+            const fin = Date.now() + duracion;
+            const lanzar = () => {
+                confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0, y: 1 }, colors: ['#d4b0ff', '#9b4dca', '#e8d5ff', '#56367c', '#fff'] });
+                confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1, y: 1 }, colors: ['#d4b0ff', '#9b4dca', '#e8d5ff', '#56367c', '#fff'] });
+                if (Date.now() < fin) requestAnimationFrame(lanzar);
+            };
+            lanzar();
+        });
+
+        const hamburguesa = document.querySelector('.hamburguesa');
+        const menu = document.querySelector('.menu');
+        const fechaBtn = document.querySelector('.menu > li > a');
+        const submenu = document.querySelector('.submenu');
+
+        hamburguesa.addEventListener('click', () => {
+            menu.classList.toggle('abierto');
+        });
+
+        fechaBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            submenu.classList.toggle('abierto');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                menu.classList.remove('abierto');
+                submenu.classList.remove('abierto');
+            }
+        });
+
+        function toggleMusica() {
+            const audio = document.getElementById('bg-music');
+            const btn = document.getElementById('btn-play');
+            if (audio.paused) {
+                audio.play();
+                btn.textContent = '⏸ Pausar música';
+            } else {
+                audio.pause();
+                btn.textContent = '▶ Reproducir música';
+            }
+        }
+    </script>
+</body>
+</html>

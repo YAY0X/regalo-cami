@@ -1,0 +1,293 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fondo: linear-gradient(135deg, #180e33, #56367c);
+    --acento: #d4b0ff;
+    --acento-hover: #e8d5ff;
+    --nav-bg: rgba(255, 255, 255, 0.08);
+    --nav-border: rgba(212, 176, 255, 0.25);
+    --submenu-bg: rgba(24, 14, 51, 0.97);
+    --item-bg: rgba(255, 255, 255, 0.06);
+    --item-border: rgba(212, 176, 255, 0.2);
+}
+
+body {
+    background: var(--fondo);
+    min-height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--acento);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── HEADER ── */
+header {
+    width: 100%;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+}
+
+.navbar {
+    background: var(--nav-bg);
+    border: 1px solid var(--nav-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 50px;
+    padding: 10px 30px;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hamburguesa {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+}
+
+.hamburguesa span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--acento);
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    position: relative;
+}
+
+.menu > li {
+    position: relative;
+}
+
+.menu > li > a {
+    color: var(--acento);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: background 0.3s, color 0.3s;
+    display: block;
+}
+
+.menu > li > a:hover {
+    background: rgba(212, 176, 255, 0.15);
+    color: var(--acento-hover);
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--submenu-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 16px;
+    padding: 10px 0;
+    list-style: none;
+    min-width: 160px;
+    z-index: 300;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(86, 54, 124, 0.5);
+}
+
+.menu > li:hover .submenu {
+    display: block;
+}
+
+.submenu.abierto {
+    display: block;
+}
+
+.submenu li a {
+    display: block;
+    padding: 10px 24px;
+    color: var(--acento);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+}
+
+.submenu li a:hover {
+    background: rgba(212, 176, 255, 0.12);
+    color: var(--acento-hover);
+}
+
+/* ── MAIN ── */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 40px 20px 60px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.titulo {
+    font-size: 52px;
+    font-family: "Marck Script", serif;
+    color: var(--acento);
+    text-align: center;
+    text-shadow: 0 0 40px rgba(212, 176, 255, 0.35);
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+/* ── MÚSICA ── */
+.musica {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-musica {
+    background: rgba(212, 176, 255, 0.12);
+    border: 1px solid var(--nav-border);
+    color: var(--acento);
+    font-family: inherit;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    backdrop-filter: blur(8px);
+}
+
+.btn-musica:hover {
+    background: rgba(212, 176, 255, 0.25);
+    color: var(--acento-hover);
+}
+
+/* ── GALERÍA ── */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.item {
+    background: var(--item-bg);
+    border: 1px solid var(--item-border);
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 24px rgba(212, 176, 255, 0.25);
+}
+
+.item img,
+.item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 700px) {
+    header {
+        padding: 16px;
+    }
+
+    .navbar {
+        border-radius: 20px;
+        padding: 12px 16px;
+        max-width: 100%;
+    }
+
+    .hamburguesa {
+        display: flex;
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .menu.abierto {
+        display: flex;
+    }
+
+    .menu > li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu > li > a {
+        font-size: 15px;
+        letter-spacing: 1px;
+        padding: 10px;
+    }
+
+    .submenu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        margin: 4px 0 8px;
+        padding: 6px 0;
+        width: 100%;
+    }
+
+    .submenu li a {
+        text-align: center;
+    }
+
+    .titulo {
+        font-size: 36px;
+    }
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .item {
+        border-radius: 12px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+}

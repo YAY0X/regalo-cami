@@ -1,0 +1,94 @@
+:root {
+    --fondo: linear-gradient(135deg, #180e33, #56367c);
+    --texto-principal: #f3eeff;
+    --acento: #d4b0ff;
+    --nav-bg: rgba(255, 255, 255, 0.08);
+    --nav-border: rgba(212, 176, 255, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--fondo);
+    min-height: 100vh;
+    font-family: 'Gill Sans', sans-serif;
+    color: var(--texto-principal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-regresar {
+    color: var(--acento);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 20px;
+    border: 1px solid var(--nav-border);
+    border-radius: 50px;
+    background: var(--nav-bg);
+    transition: 0.3s;
+}
+
+.btn-regresar:hover {
+    background: rgba(212, 176, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.contenedor-playlist {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding-bottom: 50px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.titulo-playlist {
+    font-family: 'Marck Script', cursive;
+    font-size: 48px;
+    color: var(--acento);
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(212, 176, 255, 0.4);
+}
+
+.dedicatoria {
+    font-style: italic;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.reproductor-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 24px;
+    border: 1px solid var(--nav-border);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.frase-final {
+    margin-top: 40px;
+    font-family: 'Marck Script', cursive;
+    font-size: 24px;
+    color: var(--acento);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .titulo-playlist { font-size: 36px; }
+}
